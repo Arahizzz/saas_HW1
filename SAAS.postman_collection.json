@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "954e6efc-af41-47f1-bdbd-5c1a9657fe1b",
+		"name": "SAAS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Weather",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"token\":\"{{API_TOKEN}}\",\n    \"location\": \"Kiev\",\n    \"date\": \"2022-02-20\",\n    \"requester_name\": \"Yurii Polishchuk\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_BASE}}/v1/weather",
+					"host": [
+						"{{URL_BASE}}"
+					],
+					"path": [
+						"v1",
+						"weather"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_TOKEN",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "URL_BASE",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
