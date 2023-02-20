@@ -15,7 +15,7 @@ app = Flask(__name__)
 def get_weather(location: str, date: str):
     url_base_url = "https://api.weatherapi.com"
     url_api = "v1"
-    url_endpoint = "current.json"
+    url_endpoint = "history.json"
 
     url = f"{url_base_url}/{url_api}/{url_endpoint}?q={location}&dt={date}&key={WEATHER_API_KEY}"
 
@@ -27,7 +27,7 @@ def get_weather(location: str, date: str):
     if response.status_code != 200:
         raise InvalidUsage(json.loads(response.text)['error']['message'], status_code=400)
 
-    return json.loads(response.text)['current']
+    return json.loads(response.text)['forecast']['forecastday'][0]['hour'][12]
 
 class InvalidUsage(Exception):
     status_code = 400
@@ -82,11 +82,11 @@ def weather_endpoint():
 
     weather = get_weather(location, date)
 
-    timestamp = dt.datetime.now()
+    timestamp = dt.datetime.utcnow()
 
     result = {
         "requester_name": requester_name,
-        "timestamp": timestamp,
+        "timestamp": timestamp.isoformat(timespec='seconds'),
         "location": location,
         "date": date,
         "weather": {
