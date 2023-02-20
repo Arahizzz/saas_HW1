@@ -54,7 +54,7 @@ def handle_invalid_usage(error):
 
 @app.route("/")
 def home_page():
-    return "<p><h2>KMA L2: Python Saas.</h2></p>"
+    return "<p><h2>KMA HW1: Python Saas.</h2></p>"
 
 @app.route(
     "/v1/weather",
